@@ -1,0 +1,8 @@
+Evoluutio-ohjelma
+- Tarkoitus on luoda Richard Dawkinsin “The Blind Watchmaker”-kirjassa kuvaama ohjelma.
+- Ohjelma luo otuksia, joilla on genomi, joka määrittää sen piirtämistä näytölle.
+- Ohjelma printtaa yhden otuksen keskelle näyttöä ja sen “jälkeläisiä” sen ympärille.
+- Jälkeläistä klikatessa ohjelma piirtää uuden näkymän, jossa valittu jälkeläinen on keskellä ja sen ympärille piirretään uudet jälkeläiset. Tätä voidaan toistaa äärettömän monta kertaa.
+- Yksittäisen jälkeläisen genomi eroaa yhden geenin osalta plus tai miinus yhdellä.
+- Kaikki jälkeläiset ovat erilaisia keskenään.
+- Geenien arvot ovat välillä [-9,9]
