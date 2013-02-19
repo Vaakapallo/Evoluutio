@@ -41,9 +41,9 @@ public class Otus {
     public String toString() {
         String palautettava = "";
         int[] geenit = genomi.getGeenit();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < geenit.length; i++) {
             palautettava += geenit[i];
-            if (i < 8) {
+            if (i < geenit.length - 1) {
                 palautettava += ",";
             }
         }

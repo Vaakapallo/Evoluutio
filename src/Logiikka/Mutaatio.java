@@ -42,7 +42,7 @@ public class Mutaatio {
      */
     public Otus mutatoi(Otus vanhempi) {
         Genomi mutatoitavaGenomi = vanhempi.getGenomi().kopioiGenomi();
-        int mutaationIndeksi = arpoja.nextInt(9);
+        int mutaationIndeksi = arpoja.nextInt(mutatoitavaGenomi.genominPituus());
         teeMutaatioIndeksiin(mutatoitavaGenomi.getGeenit(), mutaationIndeksi);
         return new Otus(mutatoitavaGenomi);
     }

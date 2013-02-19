@@ -47,8 +47,8 @@ public class EvoluutioMain {
      * @return Hieno uusi sattumanvarainen otus.
      */
     private static Otus randomOtus() {
-        int[] genomi = new int[9];
-        for (int i = 0; i < 9; i++) {
+        int[] genomi = new int[13];
+        for (int i = 0; i < 13; i++) {
             genomi[i] = random.nextInt(11) - 5;
             if (i == 2) {
                 genomi[i] -= 2;

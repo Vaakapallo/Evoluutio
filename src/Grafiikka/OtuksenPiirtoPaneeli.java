@@ -5,6 +5,7 @@
 package Grafiikka;
 
 import Logiikka.Otus;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import javax.swing.JPanel;
@@ -68,6 +69,10 @@ public class OtuksenPiirtoPaneeli extends JPanel {
     /**
      * Kulmien määrittämisen mahdollistava perusarvo.
      */
+    private int punaisuus;
+    private int vihreys;
+    private int sinisyys;
+    private int varinSiirtyma;
     private double kymmenisenAstetta = (Math.PI / 180) * 9.5;
     /**
      * Puun viivojen pituuteen vaikuttava perusarvo.
@@ -95,6 +100,10 @@ public class OtuksenPiirtoPaneeli extends JPanel {
         kieroutuminen = geenit[6];
         kaanteisKieroutuminen = geenit[7];
         haarautuvuus = geenit[8];
+        punaisuus = geenit[9];
+        vihreys = geenit[10];
+        sinisyys = geenit[11];
+        varinSiirtyma = geenit[12];
     }
 
     /**
@@ -117,11 +126,27 @@ public class OtuksenPiirtoPaneeli extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+        float[] varit = Color.RGBtoHSB(RGBioi(punaisuus), RGBioi(vihreys), RGBioi(sinisyys), null);
+        saadaVari(g, 1);
+
+
         g.drawLine(200, 150 + (oletusPituus + (pituudenMuutos * 2)), 200, 150);
         oksat.addFirst(new Oksa(200, 150, 0, 0));
         while (oksat.peekFirst() != null) {
             seuraavatPisteet(g);
         }
+    }
+
+    private void saadaVari(Graphics g, float kerroin) {
+        float[] varit = Color.RGBtoHSB(RGBioi(punaisuus), RGBioi(vihreys), RGBioi(sinisyys), null);
+        float savy = varit[0] * kerroin;
+        float satu = varit[1] * kerroin;
+        float kirk = varit[2] * kerroin;
+        g.setColor(Color.getHSBColor(savy, satu, kirk));
+    }
+
+    private int RGBioi(int arvo) {
+        return (arvo + 9) * 13;
     }
 
     /**
@@ -210,6 +235,7 @@ public class OtuksenPiirtoPaneeli extends JPanel {
     private void piirraJaLisaaOksa(double alkux, double alkuy, double kulma, double xKasvu, double yKasvu, Graphics g, int haara) {
         double loppux = alkux - (Math.sin(kulma) * xKasvu);
         double loppuy = alkuy - (Math.cos(kulma) * yKasvu);
+        saadaVari(g, (float) (1 * ((100 - (varinSiirtyma * haara * 5.0)) / 100.0)));
         g.drawLine((int) alkux, (int) alkuy, (int) loppux, (int) loppuy);
 //        g.drawString(otus.toString(), 0, 10);
         oksat.addFirst(new Oksa(loppux, loppuy, haara + 1, kulma));
