@@ -1,6 +1,0 @@
-#coverage viewer module properties for project
-#Wed Feb 22 15:53:25 EET 2012
-coverage.activity=OFF
-project.type=java
-coverage.coverageFile=coverage/coverage.emma
-coverage.templateFile=coverage/template.emma
